@@ -13,7 +13,7 @@ import java.awt.event.MouseListener;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class GamePanel extends JPanel implements ActionListener, KeyListener, MouseListener {
+public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	
     final int MENU = 0;
     final int GAME = 1;
@@ -25,9 +25,15 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener, Mo
 	
 	Timer frameDraw;
 	
+	
+	
+	ObjectManager oM;
+	
 	public GamePanel() {
 		  frameDraw = new Timer(1000/60,this);
 		  frameDraw.start();
+		
+		  oM = new ObjectManager();
 	}
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -69,6 +75,10 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener, Mo
 		 g.drawString("GAME STATE (TEMP)", 23, 100);
 		 
 		 
+		 
+		 oM.draw(g);
+		 
+		 
 	 }
 	 public void drawEndState(Graphics g) {
 		 g.setColor(new Color(69, 196, 255));
@@ -82,36 +92,11 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener, Mo
 		 
 	 }
 	 public void updateGameState(){
-		 
+		 oM.update();
 	 }
 	 public void updateEndState(){ 
 		 
 	 }
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mousePressed(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void mouseReleased(MouseEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
 	@Override
 	public void keyPressed(KeyEvent arg0) {
 		// TODO Auto-generated method stub

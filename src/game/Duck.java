@@ -26,7 +26,7 @@ public class Duck {
 		g.setColor(Color.BLUE);
 		g.fillRect(x, y, width, height);
 	}
-	public void move() {
+	public void checkBoundaries() {
 		if( x > DuckHunt.WIDTH - 25){
 			   xSpeed = -1*xSpeed;
 		}
@@ -41,7 +41,9 @@ public class Duck {
 		}	
 	}
 	public void update() {
-		
+		checkBoundaries();
+		x+=xSpeed;
+		y+=ySpeed;
 	}
 	
 }
