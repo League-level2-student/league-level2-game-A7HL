@@ -23,6 +23,7 @@ public class DuckHunt {
 	public void setUp() {
 		frame.add(gP);
 		frame.addKeyListener(gP);
+		frame.addMouseListener(gP.oM);
 		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
 		frame.setSize(new Dimension(WIDTH,HEIGHT));
 		frame.setVisible(true);

@@ -20,23 +20,39 @@ public class ObjectManager implements MouseListener{
 		ducks = new ArrayList<Duck>();
 		random = new Random();
 		temp = new Duck();
-		ducks.add(temp);
+		addDuck();
 	}
 	public void addDuck() {
-		ducks.add(new Duck());
+		int xSpd =0;
+		int ySpd =0;
+		
+		while(xSpd==0||ySpd==0) {
+		xSpd = (int)(Math.random()*6)-3;
+		ySpd = (int)(Math.random()*6)-3;
+		}
+		
+		ducks.add(new Duck(400,400,xSpd,ySpd));
 	}
 	public void update() {
+		
 		for(Duck d:ducks) {
-			d.update();
+			//d.update();
 		}
+		purgeObjects();
 	}
 	public void draw(Graphics g) {
 		for(Duck d:ducks) {
 			d.draw(g);
 		}
 	}
-	public void isShot() {
-		
+	public void purgeObjects() {
+		for(int i = ducks.size()-1;i>=0;i--) {
+			if(!(ducks.get(i).isActive)) {
+				ducks.remove(i);
+				addDuck();
+				break;
+			}
+		}
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
@@ -56,7 +72,17 @@ public class ObjectManager implements MouseListener{
 	@Override
 	public void mousePressed(MouseEvent arg0) {
 		// TODO Auto-generated method stub
-		
+		int mX = arg0.getX();
+		int mY = arg0.getY();
+		System.out.println("mx:"+mX+" my:"+mY);
+		//Adjust frame mouse cords
+		for(int i = 0;i<ducks.size();i++) {
+			Duck d = ducks.get(i);
+			System.out.println("dx:"+d.x+" dy: "+d.y);
+			if(mX>d.x&&mX<d.x+d.width&&mY<d.y+d.height&&mY>d.y) {
+				ducks.get(i).isActive = false;
+			}
+		}
 	}
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
