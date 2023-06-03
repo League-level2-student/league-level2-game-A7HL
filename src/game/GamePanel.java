@@ -93,6 +93,9 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	 }
 	 public void updateGameState(){
 		 oM.update();
+		 if(oM.gameOver == true) {
+				currentState = END;
+		 }
 	 }
 	 public void updateEndState(){ 
 		 
