@@ -5,12 +5,12 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 
 public class Duck {
-	int x;
-	int y;
+	double x;
+	double y;
 	int width;
 	int height;
-	int xSpeed;
-	int ySpeed;
+	double xSpeed;
+	double ySpeed;
 	boolean isActive;
 	Rectangle collisionBox;
 	
@@ -23,7 +23,7 @@ public class Duck {
 		ySpeed = 1;
 		isActive = true;
 	}
-	public Duck(int x, int y, int xSpd, int  ySpd) {
+	public Duck(double x, double y, double xSpd, double  ySpd) {
 		this.x =x;
 		this.y=y;
 		width =50;
@@ -34,7 +34,7 @@ public class Duck {
 	}
 	public void draw(Graphics g) {
 		g.setColor(Color.BLUE);
-		g.fillRect(x, y, width, height);
+		g.fillRect((int)x, (int)y, width, height);
 	}
 	public void checkBoundaries() {
 		if( x > DuckHunt.WIDTH - 50){
