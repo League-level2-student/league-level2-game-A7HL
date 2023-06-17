@@ -15,8 +15,8 @@ public class Duck {
 	Rectangle collisionBox;
 	
 	public Duck() {
-		x = 400;
-		y = 400;
+		x = 200;
+		y = 200;
 		width =50;
 		height =50;
 		xSpeed = 1;
@@ -43,7 +43,7 @@ public class Duck {
 		if(x < 0){
 			    xSpeed = -1*xSpeed;
 		}
-		if( y > DuckHunt.HEIGHT - 50){
+		if( y > DuckHunt.HEIGHT - 100){
 			   ySpeed = -1*ySpeed;
 		}
 		if(y < 0){

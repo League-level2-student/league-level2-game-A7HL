@@ -5,9 +5,11 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class DuckHunt {
-	
-	public static final int WIDTH = 800;
-	public static final int HEIGHT = 700;
+	//https://opengameart.org/content/country-side-platform-tiles
+	//https://opengameart.org/content/duck
+	public static final int WIDTH = 768;
+	public static final int HEIGHT = 448;
+	//w:800 h:700
 	
 	GamePanel gP;
 	JFrame frame;

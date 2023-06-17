@@ -11,7 +11,7 @@ import javax.swing.Timer;
 public class ObjectManager implements MouseListener{
 	ArrayList<Duck> ducks;
 	public static final int[] LEVELSPEED = new int[] {2,4,6,8,10};
-	public static final int[] NUMDUCKS = new int[] {2,3,4,5,6,8};
+	public static final int[] NUMDUCKS = new int[] {2,3,4,5,6};
 	int level;
 	int round;
 	int score;
@@ -39,20 +39,26 @@ public class ObjectManager implements MouseListener{
 			round =0;
 			bullets = NUMDUCKS[round]+3;
 			for(int i =0;i<NUMDUCKS[round];i++) {
-				addDuck(LEVELSPEED[0]);
+				//addDuck(LEVELSPEED[level]);
+				addDuck(level*2);
 			}
 		}else {
 			bullets = NUMDUCKS[round]+3;
 			for(int i =0;i<NUMDUCKS[round];i++) {
-			addDuck(LEVELSPEED[0]);
+			//addDuck(LEVELSPEED[level]);
+				addDuck(level*2);
 			}
 		}
 	}
 	public void roundFinished() {
-		if(ducks.size()==0) {
+		if(ducks.size()==0&&round+1>=NUMDUCKS.length) {
+			level++;
+			round++;
+			startNextLevel();
+			
+		}else if(ducks.size()==0){
 			round++;
 			startNextRound();
-			
 		}
 	}
 	public void gameOver() {
@@ -74,7 +80,7 @@ public class ObjectManager implements MouseListener{
 //		}
 		
 		int x = (int)(Math.random()*400);
-		int y = (int)(Math.random()*400);
+		int y = (int)(Math.random()*300);
 		ducks.add(new Duck(x,y,xSpd,ySpd));
 	}
 	public void update() {
@@ -91,8 +97,9 @@ public class ObjectManager implements MouseListener{
 		ducks = new ArrayList<Duck>();
 		random = new Random();
 		temp = new Duck();
-		level =0;
+		level =1;
 		round = 0;
+		score = 0;
 		gameOver = false;
 		startNextLevel();
 	}
@@ -105,6 +112,7 @@ public class ObjectManager implements MouseListener{
 		for(int i = ducks.size()-1;i>=0;i--) {
 			if(!(ducks.get(i).isActive)) {
 				ducks.remove(i);
+				score = score + (10*level);
 				//addDuck();
 				//break;
 			}
@@ -141,7 +149,7 @@ public class ObjectManager implements MouseListener{
 			if(mX>d.x&&mX<d.x+d.width&&mY<d.y+d.height&&mY>d.y) {
 				ducks.get(i).isActive = false;
 				System.out.println("Clicked on square");
-				score++;
+				//score++;
 			}
 		}
 	}
