@@ -80,7 +80,7 @@ public class ObjectManager implements MouseListener{
 //		}
 		
 		int x = (int)(Math.random()*400);
-		int y = (int)(Math.random()*300);
+		int y = (int)(Math.random()*275);
 		ducks.add(new Duck(x,y,xSpd,ySpd));
 	}
 	public void update() {
@@ -111,6 +111,7 @@ public class ObjectManager implements MouseListener{
 	public void purgeObjects() {
 		for(int i = ducks.size()-1;i>=0;i--) {
 			if(!(ducks.get(i).isActive)) {
+				
 				ducks.remove(i);
 				score = score + (10*level);
 				//addDuck();
@@ -143,12 +144,12 @@ public class ObjectManager implements MouseListener{
 		System.out.println("mx:"+mX+" my:"+mY);
 		//Adjust frame mouse cords
 		for(int i = 0;i<ducks.size();i++) {
-			System.out.println("for loop running");
+			//System.out.println("for loop running");
 			Duck d = ducks.get(i);
-			System.out.println("dx:"+d.x+" dy: "+d.y);
+			//System.out.println("dx:"+d.x+" dy: "+d.y);
 			if(mX>d.x&&mX<d.x+d.width&&mY<d.y+d.height&&mY>d.y) {
 				ducks.get(i).isActive = false;
-				System.out.println("Clicked on square");
+				//System.out.println("Clicked on square");
 				//score++;
 			}
 		}

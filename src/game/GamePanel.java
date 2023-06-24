@@ -80,8 +80,20 @@ public class GamePanel extends JPanel implements ActionListener, KeyListener {
 	 public void drawGameState(Graphics g){
 		 if (image1!=null) {
 				g.drawImage(image1, 0, 0, DuckHunt.WIDTH, DuckHunt.HEIGHT, null);
+				//160X224
+				//lowest 360
+				g.drawImage(image3, 0, 0, 160*2, 224*2, null);
+				g.drawImage(image3, 320, 0, 160*2, 224*2, null);
+				g.drawImage(image3, 640, 0, 160*2, 224*2, null);
+				
+				
+//				g.drawImage(image3, 160, 136, 160, 224, null);
+//				g.drawImage(image3, 320, 136, 160, 224, null);
+//				g.drawImage(image3, 480, 136, 160, 224, null);
+//				g.drawImage(image3, 640, 136, 160, 224, null);
+//				
 				g.drawImage(image2, 0, 0, DuckHunt.WIDTH, DuckHunt.HEIGHT, null);
-				//g.drawImage(image3, 0, 0, DuckHunt.WIDTH, DuckHunt.HEIGHT, null);
+				
 			} else {
 				 g.setColor(new Color(69, 196, 255));
 				 g.fillRect(0, 0, DuckHunt.WIDTH, DuckHunt.HEIGHT);
